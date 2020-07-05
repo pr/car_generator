@@ -13,9 +13,6 @@ def get_image():
 
     print(car_png)
 
-    p_open = subprocess.Popen(['./main.py'], shell=True, stdin=None, stdout=subprocess.PIPE)
-    # out, err = car_png.communicate()
-
     return send_file(io.BytesIO(ast.literal_eval(car_png.decode("ascii"))), mimetype='image/png')
 
 
