@@ -2,3 +2,4 @@ gunicorn==20.0.4
 Flask==1.1.2
 mttkinter==0.6.1
 window==0.0.3
+Pillow==7.2.0
