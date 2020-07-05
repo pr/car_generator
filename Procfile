@@ -1,1 +1,1 @@
-web: gunicorn application:flask_app --log-file -
+web: gunicorn application:flask_app --preload --log-file -
