@@ -21,5 +21,5 @@ app.master = root
 render = ImageTk.PhotoImage(app.result)
 root.geometry(f"{app.side_length}x{app.side_length}")
 
-filename = "app/car.png"
+filename = "car.png"
 render._PhotoImage__photo.write(filename)
