@@ -1,16 +1,33 @@
-import ast
 import io
-import subprocess
 
 from flask import Flask, send_file
+
+import random
+from io import BytesIO
+
+from cars.boxy import Boxy
+from cars.midsize import Midsize
+from cars.race import Race
+from car import Car
 
 flask_app = Flask(__name__)
 
 
 @flask_app.route('/')
 def get_image():
-    car_png = subprocess.check_output('main.py', shell=True)
-    return send_file(io.BytesIO(ast.literal_eval(car_png.decode("ascii"))), mimetype='image/png')
+    tile_size = 20
+
+    colors = ["red", "blue", "yellow", "purple", "orange", "green", "white", "black", "grey"]
+    color_selection = random.sample(colors, 4)
+    cars = [Boxy(color_selection), Midsize(color_selection), Race(color_selection)]
+
+    car = Car(random.choice(cars).picture, tile_size)
+
+    output = BytesIO()
+    car.result.save(output, 'PNG')
+    output.seek(0)
+
+    return send_file(io.BytesIO(output.read()), mimetype='image/png')
 
 
 if __name__ == "__main__":

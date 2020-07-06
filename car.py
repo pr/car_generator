@@ -1,15 +1,12 @@
 from PIL import Image
-from tkinter import Frame, BOTH
 
 
-class Window(Frame):
+class Car:
     def __init__(self, picture, tile_size):
         side_length = len(picture[0]) * tile_size
 
         result = Image.new("RGB", (side_length, side_length))
 
-        Frame.__init__(self)
-        self.pack(fill=BOTH, expand=1)
         self.x = 0
         self.y = 0
         self.side_length = None
