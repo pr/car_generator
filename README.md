@@ -1,4 +1,4 @@
 Car Generator
 __________
 
-To run locally: `heroku local` 
+[Refresh for a new car.](http://cars.peter.net)
