@@ -1,6 +1,6 @@
 import io
 
-from flask import Flask, send_file
+from flask import Flask, send_file, render_template
 
 import random
 from io import BytesIO
@@ -14,8 +14,13 @@ flask_app = Flask(__name__)
 
 
 @flask_app.route('/')
+def home():
+    return render_template('index.html')
+
+
+@flask_app.route('/generate')
 def get_image():
-    tile_size = 20
+    tile_size = 40
 
     colors = ["red", "blue", "yellow", "purple", "orange", "green", "white", "black", "grey"]
     color_selection = random.sample(colors, 4)
